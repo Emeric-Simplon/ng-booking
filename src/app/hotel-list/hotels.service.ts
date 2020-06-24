@@ -18,4 +18,8 @@ export class HotelsService {
   public getHotelById(id: string): Observable<any> {
     return this.http.get(this.host + "hotel/" + id)
   }
+
+  public updtHotel(id: number, body): Observable<any> {
+    return this.http.put(this.host + "hotel/" + id, body)
+  }
 }

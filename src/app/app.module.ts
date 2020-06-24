@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CitiesSidebarComponent } from './cities-sidebar/cities-sidebar.component';
@@ -25,7 +25,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule, 
     FormsModule,
     BrowserModule,
+    ReactiveFormsModule,
     NgbModule],
+    
   providers: [],
   bootstrap: [AppComponent]
 })
