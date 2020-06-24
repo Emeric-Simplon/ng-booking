@@ -1,1 +1,14 @@
-<p>hotel-list works!</p>
+<div *ngIf="hotelList" class="container d-flex">
+    <div class="card" style="width: 18rem;" *ngFor="let hotel of hotelList;">
+        <a (click)="open(hotel)">
+            
+           
+        <img class="card-img-top" src="{{hotel.photoName}}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{hotel.name}}</h5>
+            <p class="card-text">{{hotel.description}}</p>
+            <p>Nombre d'étoiles: {{hotel.stars}}</p>
+        </div>
+    </a>
+    </div>
+</div>
