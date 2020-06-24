@@ -11,8 +11,10 @@ import { HotelsService } from '../hotel-list/hotels.service';
 })
 export class HotelDetailsComponent implements OnInit {
   @Input() hotel: Hotel;
-  isAdmin: boolean
+  isAdmin: boolean;
+  isUser: boolean;
   public form: FormGroup;
+  public buyForm: FormGroup;
 
   constructor(private hotelsService: HotelsService, private fb: FormBuilder,
     private authenticationService: AuthenticationService) { }
@@ -21,7 +23,6 @@ export class HotelDetailsComponent implements OnInit {
     if (localStorage.getItem('authUser')) {
       if (this.authenticationService.isAdmn().roles[0] === "ADMIN") {
         this.isAdmin = true;
-        console.log(this.isAdmin)
         this.form = this.fb.group({
           name: this.hotel.name,
           description: this.hotel.description,
@@ -31,10 +32,17 @@ export class HotelDetailsComponent implements OnInit {
           currentPrice: this.hotel.currentPrice,
           photoName: this.hotel.photoName
         });
+      }else if (this.authenticationService.isAdmn().roles[0] === "USER"){
+         this.isUser = true
+         this.buyForm = this.fb.group({
+           quantity: ""
+         })
       }
     }
   }
+  buy(){
 
+  }
   onSubmit() {
 
     this.hotelsService.updtHotel(this.hotel.id, this.form.value).subscribe(res=> alert(res))
